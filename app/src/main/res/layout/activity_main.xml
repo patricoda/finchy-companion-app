@@ -8,9 +8,9 @@
 
     <ImageButton
         android:id="@+id/finchy"
-        android:layout_width="387dp"
-        android:layout_height="306dp"
+        android:layout_width="310dp"
+        android:layout_height="266dp"
         tools:background="@drawable/finchy"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="209dp" />
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="106dp" />
 </android.support.constraint.ConstraintLayout>

@@ -5,22 +5,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.patricoda.finchycompanionapp.sound.SoundManager;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final SoundManager soundManager = new SoundManager(this.getApplicationContext());
 
         ImageButton button = findViewById(R.id.finchy);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                doSound(v);
+               soundManager.playSound();
             }
         });
-    }
-
-    public void doSound(View view) {
-
     }
 }
