@@ -16,10 +16,10 @@ public class MainActivity extends AppCompatActivity {
         final SoundManager soundManager = new SoundManager(this.getApplicationContext());
 
         ImageButton button = findViewById(R.id.finchy);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        button.setOnClickListener(
+            v -> {
                soundManager.playSound();
             }
-        });
+        );
     }
 }

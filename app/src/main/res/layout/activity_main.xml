@@ -11,6 +11,6 @@
         android:layout_width="310dp"
         android:layout_height="266dp"
         tools:background="@drawable/finchy"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="106dp" />
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="188dp" />
 </android.support.constraint.ConstraintLayout>
