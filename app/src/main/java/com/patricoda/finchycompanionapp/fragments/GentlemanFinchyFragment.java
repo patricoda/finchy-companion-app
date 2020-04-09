@@ -16,7 +16,7 @@ public class GentlemanFinchyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //TODO want to pass sound manager from main activity
-        final SoundManager soundManager = new SoundManager(this.getContext());
+        final SoundManager soundManager = new SoundManager(this.getContext(), "");
         View view =  inflater.inflate(R.layout.gentleman_finchy_fragment, container, false);
 
         ImageButton button = view.findViewById(R.id.finchyButton);

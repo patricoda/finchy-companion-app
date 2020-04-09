@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.patricoda.finchycompanionapp.fragments.GentlemanFinchyFragment;
 import com.patricoda.finchycompanionapp.fragments.KnightFinchyFragment;
+import com.patricoda.finchycompanionapp.fragments.LadyFinchyFragment;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Fragment> fragments = new ArrayList<Fragment>();
         fragments.add(new KnightFinchyFragment());
         fragments.add(new GentlemanFinchyFragment());
+        fragments.add(new LadyFinchyFragment());
 
         viewPager = findViewById(R.id.pager);
         fragmentStateAdapter = new ScreenSlidePagerAdapter(this, fragments);

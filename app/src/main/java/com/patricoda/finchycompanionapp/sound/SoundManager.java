@@ -8,6 +8,7 @@ import com.patricoda.finchycompanionapp.R;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,13 +18,25 @@ public class SoundManager {
     private SoundPool soundPool = new SoundPool(1 , AudioManager.STREAM_MUSIC, 0);
     private List<Integer> soundResourceIdList = new ArrayList<>();
 
-    public SoundManager(Context context) {
+    public SoundManager(Context context, String soundPrefix) {
         this.context = context;
-        loadSounds();
+        loadSounds(soundPrefix);
     }
 
-    private void loadSounds() {
-        Field[] soundResources = R.raw.class.getFields();
+    private void loadSounds(String soundPrefix) {
+        List<Field> soundResources = Arrays.asList(R.raw.class.getFields());
+
+        if(!soundPrefix.isEmpty()) {
+            List<Field> subset = new ArrayList<>();
+            for(Field field: soundResources) {
+                String fieldPrefix = field.getName().split("_")[0];
+                if(soundPrefix.equals(fieldPrefix)) {
+                    subset.add(field);
+                }
+            }
+
+            soundResources = subset;
+        }
 
         for(Field sound: soundResources) {
             try {
