@@ -3,11 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3B969B"
     tools:context=".fragments.KnightFinchyFragment">
 
     <ImageButton
         android:id="@+id/finchyButton"
         android:layout_width="wrap_content"
         android:layout_height="448dp"
-        android:src="@drawable/knight_finchy" />
+        android:layout_gravity="center"
+        android:scaleType="centerInside"
+        android:src="@drawable/knight_finchy"
+        android:background="@null"/>
 </FrameLayout>
