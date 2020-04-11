@@ -2,9 +2,7 @@ package com.patricoda.finchycompanionapp;
 
 import android.os.Bundle;
 
-import com.patricoda.finchycompanionapp.fragments.GentlemanFinchyFragment;
-import com.patricoda.finchycompanionapp.fragments.KnightFinchyFragment;
-import com.patricoda.finchycompanionapp.fragments.LadyFinchyFragment;
+import com.patricoda.finchycompanionapp.view.fragments.FinchyFragment;
 
 import java.util.ArrayList;
 
@@ -26,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ArrayList<Fragment> fragments = new ArrayList<Fragment>();
-        fragments.add(new KnightFinchyFragment());
-        fragments.add(new GentlemanFinchyFragment());
-        fragments.add(new LadyFinchyFragment());
+        fragments.add(new FinchyFragment(R.layout.knight_finchy_fragment, "ds3"));
+        fragments.add(new FinchyFragment(R.layout.gentleman_finchy_fragment, ""));
+        fragments.add(new FinchyFragment(R.layout.lady_finchy_fragment, ""));
 
         viewPager = findViewById(R.id.pager);
         fragmentStateAdapter = new ScreenSlidePagerAdapter(this, fragments);

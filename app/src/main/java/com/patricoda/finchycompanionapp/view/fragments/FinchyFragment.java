@@ -1,4 +1,4 @@
-package com.patricoda.finchycompanionapp.fragments;
+package com.patricoda.finchycompanionapp.view.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,13 +11,27 @@ import com.patricoda.finchycompanionapp.sound.SoundManager;
 
 import androidx.fragment.app.Fragment;
 
-public class LadyFinchyFragment extends Fragment {
+public class FinchyFragment extends Fragment {
+    final int layoutResource;
+    final String soundPrefix;
+    SoundManager soundManager = null;
+
+    public FinchyFragment(final int layoutResource, final String soundPrefix) {
+        super();
+        this.layoutResource = layoutResource;
+        this.soundPrefix = soundPrefix;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        this.soundManager = new SoundManager(this.getContext(), soundPrefix);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //TODO want to pass sound manager from main activity
-        final SoundManager soundManager = new SoundManager(this.getContext(), "");
-        View view =  inflater.inflate(R.layout.lady_finchy_fragment, container, false);
+        View view =  inflater.inflate(this.layoutResource, container, false);
 
         ImageButton button = view.findViewById(R.id.finchyButton);
         button.setOnClickListener(

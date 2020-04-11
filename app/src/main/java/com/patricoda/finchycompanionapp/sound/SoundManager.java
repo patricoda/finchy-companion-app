@@ -12,10 +12,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-//TODO make this an abstract class? have concrete instance per person?
 public class SoundManager {
     private Context context;
-    private SoundPool soundPool = new SoundPool(1 , AudioManager.STREAM_MUSIC, 0);
+    public SoundPool soundPool = new SoundPool(1 , AudioManager.STREAM_MUSIC, 0);
     private List<Integer> soundResourceIdList = new ArrayList<>();
 
     public SoundManager(Context context, String soundPrefix) {
@@ -50,7 +49,8 @@ public class SoundManager {
     public void playSound() {
         //TODO pick one randomly over shuffling each time, remove sound to ensure we don't play the same over and over?
         shuffleSounds();
-        this.soundPool.play(soundResourceIdList.get(0), 1, 1,0,0,1);
+
+        soundPool.play(soundResourceIdList.get(0), 1, 1, 0, 0, 1);
     }
 
     private void shuffleSounds() {
