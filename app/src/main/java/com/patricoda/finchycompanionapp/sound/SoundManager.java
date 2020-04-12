@@ -11,11 +11,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class SoundManager {
     private Context context;
     public SoundPool soundPool = new SoundPool(1 , AudioManager.STREAM_MUSIC, 0);
     private List<Integer> soundResourceIdList = new ArrayList<>();
+    private Random randomSoundSelector = new Random();
 
     public SoundManager(Context context, String soundPrefix) {
         this.context = context;
@@ -46,14 +48,12 @@ public class SoundManager {
         }
     }
 
-    public void playSound() {
-        //TODO pick one randomly over shuffling each time, remove sound to ensure we don't play the same over and over?
-        shuffleSounds();
-
-        soundPool.play(soundResourceIdList.get(0), 1, 1, 0, 0, 1);
+    public void playRandomSound() {
+        playSound(randomSoundSelector.nextInt(soundResourceIdList.size()));
     }
 
-    private void shuffleSounds() {
-        Collections.shuffle(soundResourceIdList);
+    public void playSound(final int selectedSound) {
+        System.out.println(selectedSound);
+        soundPool.play(soundResourceIdList.get(selectedSound), 1, 1, 0, 0, 1);
     }
 }
