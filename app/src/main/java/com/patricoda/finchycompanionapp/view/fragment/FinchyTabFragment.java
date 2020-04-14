@@ -1,4 +1,4 @@
-package com.patricoda.finchycompanionapp.view.fragments;
+package com.patricoda.finchycompanionapp.view.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,15 +9,13 @@ import android.widget.ImageButton;
 import com.patricoda.finchycompanionapp.R;
 import com.patricoda.finchycompanionapp.sound.SoundManager;
 
-import androidx.fragment.app.Fragment;
-
-public class FinchyFragment extends Fragment {
+public class FinchyTabFragment extends TabFragment {
     final int layoutResource;
     final String soundPrefix;
     SoundManager soundManager = null;
 
-    public FinchyFragment(final int layoutResource, final String soundPrefix) {
-        super();
+    public FinchyTabFragment(final String tabTitle, final int layoutResource, final String soundPrefix) {
+        super(tabTitle);
         this.layoutResource = layoutResource;
         this.soundPrefix = soundPrefix;
     }

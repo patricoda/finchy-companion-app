@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#3B969B"
-    tools:context=".view.fragments.FinchyFragment">
+    tools:context=".view.fragment.FinchyTabFragment">
 
     <ImageButton
         android:id="@+id/finchyButton"
@@ -12,6 +12,6 @@
         android:layout_height="448dp"
         android:layout_gravity="center"
         android:scaleType="centerInside"
-        android:src="@drawable/knight_finchy_button"
+        android:src="@drawable/chapstick_finchy_button"
         android:background="@null"/>
 </FrameLayout>

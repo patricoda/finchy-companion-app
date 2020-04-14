@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#69643C"
-    tools:context=".view.fragments.FinchyFragment">
+    android:background="#A55988"
+    tools:context=".view.fragment.FinchyTabFragment">
 
     <ImageButton
         android:id="@+id/finchyButton"
         android:layout_width="wrap_content"
         android:layout_height="448dp"
         android:layout_gravity="center"
-        android:background="@null"
         android:scaleType="centerInside"
-        android:src="@drawable/gentleman_finchy_button" />
+        android:src="@drawable/female_finchy_button"
+        android:background="@null"/>
 </FrameLayout>

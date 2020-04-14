@@ -2,7 +2,10 @@ package com.patricoda.finchycompanionapp;
 
 import android.os.Bundle;
 
-import com.patricoda.finchycompanionapp.view.fragments.FinchyFragment;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+import com.patricoda.finchycompanionapp.view.fragment.FinchyTabFragment;
+import com.patricoda.finchycompanionapp.view.fragment.TabFragment;
 
 import java.util.ArrayList;
 
@@ -17,26 +20,32 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentStateAdapter fragmentStateAdapter;
     private ViewPager2 viewPager;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<Fragment> fragments = new ArrayList<Fragment>();
-        fragments.add(new FinchyFragment(R.layout.knight_finchy_fragment, "ds3"));
-        fragments.add(new FinchyFragment(R.layout.gentleman_finchy_fragment, ""));
-        fragments.add(new FinchyFragment(R.layout.lady_finchy_fragment, ""));
+        ArrayList<TabFragment> fragments = new ArrayList<>();
+        fragments.add(new FinchyTabFragment("Chapstick Finchy", R.layout.chapstick_finchy_fragment, "ds3"));
+        fragments.add(new FinchyTabFragment("Posh Finchy",R.layout.posh_finchy_fragment, ""));
+        fragments.add(new FinchyTabFragment("Femchy", R.layout.female_finchy_fragment, ""));
 
         viewPager = findViewById(R.id.pager);
         fragmentStateAdapter = new ScreenSlidePagerAdapter(this, fragments);
         viewPager.setAdapter(fragmentStateAdapter);
+
+        tabLayout = findViewById(R.id.tab_layout);
+        new TabLayoutMediator(tabLayout, viewPager,
+                (tab, position) -> tab.setText(((ScreenSlidePagerAdapter)viewPager.getAdapter()).getFragmentTitle(position))
+        ).attach();
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStateAdapter {
-        private ArrayList<Fragment> fragments;
+        private ArrayList<TabFragment> fragments;
 
-        public ScreenSlidePagerAdapter(FragmentActivity fragmentActivity, ArrayList<Fragment> fragments) {
+        public ScreenSlidePagerAdapter(FragmentActivity fragmentActivity, ArrayList<TabFragment> fragments) {
             super(fragmentActivity);
             this.fragments = fragments;
         }
@@ -45,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment createFragment(int position) {
             return fragments.get(position);
+        }
+
+        public String getFragmentTitle(int position) {
+            return fragments.get(position).getTabTitle();
         }
 
         @Override
