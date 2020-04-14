@@ -12,6 +12,6 @@
         android:layout_height="448dp"
         android:layout_gravity="center"
         android:scaleType="centerInside"
-        android:src="@drawable/knight_finchy"
+        android:src="@drawable/knight_finchy_button"
         android:background="@null"/>
 </FrameLayout>

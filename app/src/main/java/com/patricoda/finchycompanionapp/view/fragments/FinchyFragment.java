@@ -34,6 +34,7 @@ public class FinchyFragment extends Fragment {
         View view =  inflater.inflate(this.layoutResource, container, false);
 
         ImageButton button = view.findViewById(R.id.finchyButton);
+
         button.setOnClickListener(
                 v -> {
                     soundManager.playRandomSound();

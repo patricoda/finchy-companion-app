@@ -9,13 +9,12 @@ import com.patricoda.finchycompanionapp.R;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 public class SoundManager {
     private Context context;
-    public SoundPool soundPool = new SoundPool(1 , AudioManager.STREAM_MUSIC, 0);
+    private SoundPool soundPool = new SoundPool(1 , AudioManager.STREAM_MUSIC, 0);
     private List<Integer> soundResourceIdList = new ArrayList<>();
     private Random randomSoundSelector = new Random();
 

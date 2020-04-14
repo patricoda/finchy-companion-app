@@ -12,6 +12,6 @@
         android:layout_height="448dp"
         android:layout_gravity="center"
         android:scaleType="centerInside"
-        android:src="@drawable/lady_finchy"
+        android:src="@drawable/lady_finchy_button"
         android:background="@null"/>
 </FrameLayout>

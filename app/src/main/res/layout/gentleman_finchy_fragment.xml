@@ -13,5 +13,5 @@
         android:layout_gravity="center"
         android:background="@null"
         android:scaleType="centerInside"
-        android:src="@drawable/gentleman_finchy" />
+        android:src="@drawable/gentleman_finchy_button" />
 </FrameLayout>
