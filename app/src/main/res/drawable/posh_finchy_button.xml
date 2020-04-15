@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true"
-        android:drawable="@drawable/posh_finchy_clicked" />
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item app:state_playing_sound="true"
+        android:drawable="@drawable/posh_finchy_playing" />
     <item android:drawable="@drawable/posh_finchy" />
 </selector>

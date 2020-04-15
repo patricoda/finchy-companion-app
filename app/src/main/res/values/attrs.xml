@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="playing_sound">
+        <attr name="state_playing_sound" format="boolean" />
+    </declare-styleable>
+</resources>

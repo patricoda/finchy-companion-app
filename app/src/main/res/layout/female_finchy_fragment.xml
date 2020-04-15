@@ -6,7 +6,7 @@
     android:background="#A55988"
     tools:context=".view.fragment.FinchyTabFragment">
 
-    <ImageButton
+    <com.patricoda.finchycompanionapp.view.fragment.ImageButtonWithSoundState
         android:id="@+id/finchyButton"
         android:layout_width="wrap_content"
         android:layout_height="448dp"

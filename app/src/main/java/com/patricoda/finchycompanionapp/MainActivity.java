@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<TabFragment> fragments = new ArrayList<>();
+        final ArrayList<TabFragment> fragments = new ArrayList<>();
         fragments.add(new FinchyTabFragment("Chapstick Finchy", R.layout.chapstick_finchy_fragment, "ds3"));
         fragments.add(new FinchyTabFragment("Posh Finchy",R.layout.posh_finchy_fragment, ""));
         fragments.add(new FinchyTabFragment("Femchy", R.layout.female_finchy_fragment, ""));
@@ -38,14 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tab_layout);
         new TabLayoutMediator(tabLayout, viewPager,
-                (tab, position) -> tab.setText(((ScreenSlidePagerAdapter)viewPager.getAdapter()).getFragmentTitle(position))
+                (tab, position) -> tab.setText(fragments.get(position).getTabTitle())
         ).attach();
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStateAdapter {
-        private ArrayList<TabFragment> fragments;
+        private ArrayList<? extends Fragment> fragments;
 
-        public ScreenSlidePagerAdapter(FragmentActivity fragmentActivity, ArrayList<TabFragment> fragments) {
+        public ScreenSlidePagerAdapter(FragmentActivity fragmentActivity, ArrayList<? extends Fragment> fragments) {
             super(fragmentActivity);
             this.fragments = fragments;
         }
@@ -54,10 +54,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment createFragment(int position) {
             return fragments.get(position);
-        }
-
-        public String getFragmentTitle(int position) {
-            return fragments.get(position).getTabTitle();
         }
 
         @Override

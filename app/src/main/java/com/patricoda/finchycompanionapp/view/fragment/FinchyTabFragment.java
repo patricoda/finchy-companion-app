@@ -4,10 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import com.patricoda.finchycompanionapp.R;
 import com.patricoda.finchycompanionapp.sound.SoundManager;
+
+import androidx.lifecycle.LifecycleOwner;
 
 public class FinchyTabFragment extends TabFragment {
     final int layoutResource;
@@ -31,7 +32,9 @@ public class FinchyTabFragment extends TabFragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(this.layoutResource, container, false);
 
-        ImageButton button = view.findViewById(R.id.finchyButton);
+        ImageButtonWithSoundState button = view.findViewById(R.id.finchyButton);
+
+        soundManager.isPlaying().observe((LifecycleOwner) this.getContext(), isPlaying -> button.setPlayingSound(isPlaying, true));
 
         button.setOnClickListener(
                 v -> {
