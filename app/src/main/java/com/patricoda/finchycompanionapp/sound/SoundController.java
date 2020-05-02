@@ -17,14 +17,14 @@ import java.util.TimerTask;
 
 import androidx.lifecycle.MutableLiveData;
 
-public class SoundManager {
+public class SoundController {
     private Context context;
     private SoundPool soundPool = new SoundPool(1 , AudioManager.STREAM_MUSIC, 0);
     private List<SoundPoolResourceIdWithDuration> soundPoolResourceList = new ArrayList<>();
     private Random randomSoundSelector = new Random();
     private MutableLiveData<Boolean> isPlayingFlag = new MutableLiveData<>();
 
-    public SoundManager(Context context, String soundPrefix) {
+    public SoundController(Context context, String soundPrefix) {
         this.context = context;
         this.isPlayingFlag.setValue(false);
 

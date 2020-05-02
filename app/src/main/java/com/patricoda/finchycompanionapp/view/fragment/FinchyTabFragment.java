@@ -6,14 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.patricoda.finchycompanionapp.R;
-import com.patricoda.finchycompanionapp.sound.SoundManager;
+import com.patricoda.finchycompanionapp.sound.SoundController;
 
 import androidx.lifecycle.LifecycleOwner;
 
 public class FinchyTabFragment extends TabFragment {
     final int layoutResource;
     final String soundPrefix;
-    SoundManager soundManager = null;
+    SoundController soundController = null;
 
     public FinchyTabFragment(final String tabTitle, final int layoutResource, final String soundPrefix) {
         super(tabTitle);
@@ -24,7 +24,7 @@ public class FinchyTabFragment extends TabFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.soundManager = new SoundManager(this.getContext(), soundPrefix);
+        this.soundController = new SoundController(this.getContext(), soundPrefix);
     }
 
     @Override
@@ -34,13 +34,14 @@ public class FinchyTabFragment extends TabFragment {
 
         ImageButtonWithSoundState button = view.findViewById(R.id.finchyButton);
 
-        soundManager.isPlaying().observe((LifecycleOwner) this.getContext(), isPlaying -> button.setPlayingSound(isPlaying, true));
-
         button.setOnClickListener(
                 v -> {
-                    soundManager.playRandomSound();
+                    soundController.playRandomSound();
                 }
         );
+
+        //watch for changes in playing sound state, and set button state to reflect this
+        soundController.isPlaying().observe((LifecycleOwner) this.getContext(), isPlaying -> button.setPlayingSound(isPlaying, true));
 
         return view;
     }
