@@ -9,7 +9,7 @@
     <com.patricoda.finchycompanionapp.view.fragment.ImageButtonWithSoundState
         android:id="@+id/finchyButton"
         android:layout_width="wrap_content"
-        android:layout_height="448dp"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:scaleType="centerInside"
         android:src="@drawable/female_finchy_button"
