@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final ArrayList<TabFragment> fragments = new ArrayList<>();
-        fragments.add(new FinchyTabFragment("Chapstick Finchy", R.layout.chapstick_finchy_fragment, "ds3"));
-        fragments.add(new FinchyTabFragment("Posh Finchy",R.layout.posh_finchy_fragment, "bb"));
-        fragments.add(new FinchyTabFragment("Femchy", R.layout.female_finchy_fragment, "ds2"));
+        fragments.add(new FinchyTabFragment("Chapstick", R.layout.chapstick_finchy_fragment, "ds3"));
+        fragments.add(new FinchyTabFragment("Posh",R.layout.posh_finchy_fragment, "bb"));
+        fragments.add(new FinchyTabFragment("Fem", R.layout.female_finchy_fragment, "ds2"));
 
         viewPager = findViewById(R.id.pager);
         fragmentStateAdapter = new ScreenSlidePagerAdapter(this, fragments);

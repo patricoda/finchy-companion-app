@@ -21,8 +21,13 @@ public class SoundController {
     private Context context;
     private SoundPool soundPool = new SoundPool(1 , AudioManager.STREAM_MUSIC, 0);
     private List<SoundPoolResourceIdWithDuration> soundPoolResourceList = new ArrayList<>();
+    private List<SoundPoolResourceIdWithDuration> playedSoundPoolResourceList = new ArrayList<>();
     private Random randomSoundSelector = new Random();
     private MutableLiveData<Boolean> isPlayingFlag = new MutableLiveData<>();
+
+    public MutableLiveData<Boolean> isPlaying() {
+        return this.isPlayingFlag;
+    }
 
     public SoundController(Context context, String soundPrefix) {
         this.context = context;
@@ -64,22 +69,36 @@ public class SoundController {
     }
 
     public void playRandomSound() {
-        playSound(randomSoundSelector.nextInt(soundPoolResourceList.size()));
+        int selectedIndex = randomSoundSelector.nextInt(soundPoolResourceList.size());
+        final SoundPoolResourceIdWithDuration selectedSound = soundPoolResourceList.get(selectedIndex);
+
+        playSound(selectedSound);
     }
 
-    public void playSound(final int selectedSound) {
+    public void playSound(final SoundPoolResourceIdWithDuration selectedSound) {
         isPlayingFlag.setValue(true);
-        soundPool.play(soundPoolResourceList.get(selectedSound).getId(), 1, 1, 0, 0, 1);
+        soundPool.play(selectedSound.getId(), 1, 1, 0, 0, 1);
+
+        //use the duration to determine when isPlayingFlag should be set to false
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 isPlayingFlag.postValue(false);
             }
-        }, soundPoolResourceList.get(selectedSound).getDuration());
+        }, selectedSound.getDuration());
+
+        transferSoundToPlayedList(selectedSound);
     }
 
-    public MutableLiveData<Boolean> isPlaying() {
-        return this.isPlayingFlag;
+    public void transferSoundToPlayedList(final SoundPoolResourceIdWithDuration selectedSound) {
+        soundPoolResourceList.remove(selectedSound);
+        playedSoundPoolResourceList.add(selectedSound);
+
+        //if we are out of sounds to select from, reset the lists
+        if(soundPoolResourceList.isEmpty()) {
+            soundPoolResourceList.addAll(playedSoundPoolResourceList);
+            playedSoundPoolResourceList.clear();
+        }
     }
 
     private long getSoundDuration(int soundId){
