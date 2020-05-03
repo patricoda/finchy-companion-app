@@ -36,7 +36,9 @@ public class FinchyTabFragment extends TabFragment {
 
         button.setOnClickListener(
                 v -> {
-                    soundController.playRandomSound();
+                    if(!button.getIsPlayingSound()) {
+                        soundController.playRandomSound();
+                    }
                 }
         );
 

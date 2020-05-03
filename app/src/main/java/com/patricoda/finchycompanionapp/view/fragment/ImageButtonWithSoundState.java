@@ -21,6 +21,10 @@ public class ImageButtonWithSoundState extends androidx.appcompat.widget.AppComp
         super(context, attrs, defStyleAttr);
     }
 
+    public boolean getIsPlayingSound() {
+        return this.isPlayingSound;
+    }
+
     public void setPlayingSound(final boolean isPlayingSound, final boolean refreshDrawableState) {
         this.isPlayingSound = isPlayingSound;
 
